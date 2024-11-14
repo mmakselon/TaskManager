@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using TaskManager.Data;
+using TaskManager.Persistence;
 
 namespace TaskManager.Data.Migrations
 {
