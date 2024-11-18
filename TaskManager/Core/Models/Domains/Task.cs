@@ -25,7 +25,7 @@ namespace TaskManager.Core.Models.Domains
         public DateTime? Term { get; set; }
 
         [Display(Name = "Zrealizowane")]
-        public bool IsExecute { get; set; }
+        public bool IsExecuted { get; set; }
 
         public string UserId { get; set; }
 
