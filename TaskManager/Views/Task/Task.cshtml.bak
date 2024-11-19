@@ -1,0 +1,20 @@
+﻿@model TaskManager.Core.ViewModels.TaskViewModel
+
+@{
+    ViewBag.Title = Model.Heading;
+}
+<h1>@Model.Heading</h1>
+
+@using (Html.BeginForm("Task","Task"))
+{
+    <p class="alert alert-info mt-4 mb-4">
+        Pola tytuł, opis i kategoria są <strong>wymagane</strong>
+    </p>
+
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x=>x.Task.Id)
+
+    <div class="form-group">
+        @Html.Label
+    </div>
+}
