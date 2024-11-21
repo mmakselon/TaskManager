@@ -24,7 +24,7 @@ namespace TaskManager.Controllers
                 Categories = _taskRepository.GetCategories()
             };
 
-            return View();
+            return View(vm);
         }
 
         [HttpPost]
@@ -40,7 +40,21 @@ namespace TaskManager.Controllers
         return PartialView("_tasksTable", tasks);
         }
 
-    }
+        public IActionResult Task(int id = 0)
+        {
+            var userId = User.GetUserId();
 
-    
-}
+            var task = id == 0 ?
+                new Task { Id = 0, UserId = userId, Term = DateTime.Today } :
+                _taskService.Get(id, userId);
+
+            var vm = new TaskViewModel
+            {
+                Task = task,
+                Heading = id == 0 ? 
+                    "Dodawanie nowego zadania" : "Edytowanie zadania",
+                Categories = _taskService.GetCategories()
+            };
+
+            return View(vm);
+        }
