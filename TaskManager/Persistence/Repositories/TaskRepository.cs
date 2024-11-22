@@ -30,5 +30,15 @@ namespace TaskManager.Persistence.Repositories
         {
             throw new NotImplementedException();
         }
+
+        internal void Delete(int id, string userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void Finish(int id, string userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
