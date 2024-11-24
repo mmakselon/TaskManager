@@ -5,38 +5,44 @@ namespace TaskManager.Persistence.Repositories
 {
     public class TaskRepository
     {
+        private ApplicationDbContext _context;
+
+        public TaskRepository(ApplicationDbContext context)
+        {
+                _context = context; 
+        }
 
         public IEnumerable<Task> Get(string userId, bool isExecuted = false, int categoryId = 0, string titl = null)
         {
             throw new NotImplementedException();
         }
 
-        internal Task Get(int id, string userId)
+        public Task Get(int id, string userId)
         {
             throw new NotImplementedException();
         }
 
-        internal IEnumerable<Category> GetCategories()
+        public IEnumerable<Category> GetCategories()
         {
             throw new NotImplementedException();
         }
 
-        internal void Add(Task task)
+        public void Add(Task task)
         {
             throw new NotImplementedException();
         }
 
-        internal void Update(Task task)
+        public void Update(Task task)
         {
             throw new NotImplementedException();
         }
 
-        internal void Delete(int id, string userId)
+        public void Delete(int id, string userId)
         {
             throw new NotImplementedException();
         }
 
-        internal void Finish(int id, string userId)
+        public void Finish(int id, string userId)
         {
             throw new NotImplementedException();
         }

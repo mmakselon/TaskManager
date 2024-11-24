@@ -6,19 +6,13 @@ using TaskManager.Persistence.Extensions;
 using TaskManager.Persistence.Repositories;
 using TaskManager.Core.Models.Domains;
 using Task = TaskManager.Core.Models.Domains.Task;
-using TaskManager.Persistence;
 
 namespace TaskManager.Controllers
 {
     [Authorize]
     public class TaskController : Controller
     {
-        private TaskRepository _taskRepository;
-
-        public TaskController(ApplicationDbContext context)
-        {
-            _taskRepository = new TaskRepository(context);
-        }
+        private TaskRepository _taskRepository = new TaskRepository();
 
         public IActionResult Tasks()
         {
