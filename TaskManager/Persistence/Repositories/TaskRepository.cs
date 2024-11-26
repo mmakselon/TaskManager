@@ -36,27 +36,49 @@ namespace TaskManager.Persistence.Repositories
 
         public Task Get(int id, string userId)
         {
-            throw new NotImplementedException();
+            var task = _context.Tasks
+                .Single(x => x.Id == id && x.UserId == userId);
+
+            return task;
         }
 
         public void Add(Task task)
         {
-            throw new NotImplementedException();
+            _context.Tasks.Add(task);
+            _context.SaveChanges();
         }
 
         public void Update(Task task)
         {
-            throw new NotImplementedException();
+            var taskToUpdate = _context.Tasks.Single(x => x.Id == task.Id);
+
+            taskToUpdate.CategoryId = task.CategoryId;
+            taskToUpdate.Description = task.Description;
+            taskToUpdate.IsExecuted = task.IsExecuted;
+            taskToUpdate.Term = task.Term;
+            taskToUpdate.Title = task.Title;
+
+            _context.SaveChanges();
         }
 
         public void Delete(int id, string userId)
         {
-            throw new NotImplementedException();
+            var taskToDelete = _context.Tasks
+                .Single(x => x.Id == id && x.UserId == userId);
+
+            _context.Tasks.Remove(taskToDelete);
+
+            _context.SaveChanges();
         }
 
         public void Finish(int id, string userId)
         {
-            throw new NotImplementedException();
+            var taskToUpdate = _context.Tasks
+               .Single(x => x.Id == id && x.UserId == userId);
+
+            taskToUpdate.IsExecuted = true;
+
+            _context.SaveChanges();
         }
     }
 }
