@@ -53,6 +53,7 @@ namespace MyTasks.Persistence.Services
         public void Finish(int id, string userId)
         {
             _unitOfWork.Task.Finish(id, userId);
+            /// dodatkowa logika
             _unitOfWork.Complete();
         }
     }
