@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using TaskManager.Core.Models.Domains;
 using Task = TaskManager.Core.Models.Domains.Task;
+using MyTasks.Core.Repositories;
 
 namespace TaskManager.Persistence.Repositories
 {
-    public class TaskRepository
+    public class TaskRepository : ITaskRepository
     {
         private ApplicationDbContext _context;
         public TaskRepository(ApplicationDbContext context)
