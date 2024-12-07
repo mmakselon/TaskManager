@@ -4,7 +4,7 @@ using System.Linq;
 using TaskManager.Core.Models.Domains;
 using Task = TaskManager.Core.Models.Domains.Task;
 
-namespace MyTasks.Core.Service
+namespace TaskManager.Core.Service
 {
     public interface ITaskService
     {

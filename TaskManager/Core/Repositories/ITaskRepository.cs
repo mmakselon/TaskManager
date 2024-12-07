@@ -2,7 +2,7 @@
 using TaskManager.Core.Models.Domains;
 using Task = TaskManager.Core.Models.Domains.Task;
 
-namespace MyTasks.Core.Repositories
+namespace TaskManager.Core.Repositories
 {
     public interface ITaskRepository
     {
