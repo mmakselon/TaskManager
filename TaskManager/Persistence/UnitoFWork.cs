@@ -12,15 +12,15 @@ namespace MyTasks.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IApplicationDbContext _context;
 
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(IApplicationDbContext context)
         {
             _context = context;
             Task = new TaskRepository(context);
         }
 
-        public TaskRepository Task { get; set; }
+        public ITaskRepository Task { get; set; }
 
         ITaskRepository IUnitOfWork.Task => throw new NotImplementedException();
 

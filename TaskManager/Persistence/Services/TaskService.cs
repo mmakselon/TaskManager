@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using TaskManager.Core.Models.Domains;
 using Task = TaskManager.Core.Models.Domains.Task;
-using MyTasks.Core.Service;
+using TaskManager.Core.Service;
 
 namespace MyTasks.Persistence.Services 
 {
     public class TaskService : ITaskService
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public TaskService(UnitOfWork unitOfWork)
+        public TaskService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

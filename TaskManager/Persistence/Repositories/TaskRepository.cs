@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using TaskManager.Core.Models.Domains;
 using Task = TaskManager.Core.Models.Domains.Task;
-using MyTasks.Core.Repositories;
+using TaskManager.Core.Repositories;
 
 namespace TaskManager.Persistence.Repositories
 {
     public class TaskRepository : ITaskRepository
     {
-        private ApplicationDbContext _context;
-        public TaskRepository(ApplicationDbContext context)
+        private IApplicationDbContext _context;
+        public TaskRepository(IApplicationDbContext context)
         {
             _context = context;
         }

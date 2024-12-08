@@ -13,17 +13,18 @@ using Task = TaskManager.Core.Models.Domains.Task;
 using TaskManager.Persistence;
 using MyTasks.Persistence;
 using MyTasks.Persistence.Services;
+using TaskManager.Core.Service;
 
 namespace TaskManager.Controllers
 {
     [Authorize]
     public class TaskController : Controller
     {
-        private TaskService _taskService;
+        private ITaskService _taskService;
 
-        public TaskController(ApplicationDbContext context)
+        public TaskController(ITaskService taskService)
         {
-          _taskService = new TaskService(new UnitOfWork(context));
+          _taskService = taskService;
         }
 
         public IActionResult Tasks()
