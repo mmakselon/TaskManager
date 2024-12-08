@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using MyTasks.Core;
+using TaskManager.Core;
 using TaskManager.Core.Models.Domains;
 using Task = TaskManager.Core.Models.Domains.Task;
 
