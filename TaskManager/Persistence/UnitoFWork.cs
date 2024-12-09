@@ -22,8 +22,6 @@ namespace MyTasks.Persistence
 
         public ITaskRepository Task { get; set; }
 
-        ITaskRepository IUnitOfWork.Task => throw new NotImplementedException();
-
         public void Complete()
         {
             _context.SaveChanges();

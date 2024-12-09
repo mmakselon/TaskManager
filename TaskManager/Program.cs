@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MyTasks.Persistence;
 using MyTasks.Persistence.Services;
 using TaskManager.Core;
 using TaskManager.Core.Models.Domains;
@@ -13,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddScoped<ITaskService,TaskService>();
 builder.Services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
-builder.Services.AddScoped<IUnitOfWork, IUnitOfWork>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
