@@ -15,5 +15,6 @@ namespace TaskManager.Core.Models.Domains
         }
 
         public ICollection<Task> Tasks { get; set; }
+        public ICollection<Category> Categories { get; set; }
     }
 }
