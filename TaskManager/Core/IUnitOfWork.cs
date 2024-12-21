@@ -10,6 +10,7 @@ namespace TaskManager.Core
     public interface IUnitOfWork
     {
         ITaskRepository Task { get; }
+        ICategoryRepository Category { get; }
         void Complete();
     }
 }
