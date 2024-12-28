@@ -18,11 +18,12 @@ namespace MyTasks.Persistence
         {
             _context = context;
             Task = new TaskRepository(context);
+            Category = new CategoryRepository(context);
         }
 
         public ITaskRepository Task { get; set; }
 
-        public ICategoryRepository Category => throw new NotImplementedException();
+        public ICategoryRepository Category { get; set; }
 
         public void Complete()
         {
