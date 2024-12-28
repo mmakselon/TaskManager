@@ -22,6 +22,8 @@ namespace MyTasks.Persistence
 
         public ITaskRepository Task { get; set; }
 
+        public ICategoryRepository Category => throw new NotImplementedException();
+
         public void Complete()
         {
             _context.SaveChanges();
