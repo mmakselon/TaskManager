@@ -32,7 +32,7 @@ namespace TaskManager.Persistence.Services
 
         public Category Get(int id, string userId)
         {
-            _unitOfWork.Category.Get(id, userId);
+            return _unitOfWork.Category.Get(id, userId);
         }
 
         public void Update(Category category)
