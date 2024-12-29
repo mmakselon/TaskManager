@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TaskManager.Core.Models.Domains.Category>
+@{
+    ViewData["Title"] = "Kategorie";
+}
+
+<h1 class="mb-3">Moje Kategorie</h1>
+
+<button class="btn btn-primary mb-3"
+onclick='window.location.href = "@Url.Action("Category","Category")"'>
+    Dodaj
+</button>
+
+<div id="categoriesTable">
+    <table class="table mt-3table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Nazwa</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var category in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("Task", "Task",
+                                    new { id = category.Id })"
+                               class="font-weight-bold">
+                                @category.Name
+                            </a>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm"
+                                    onclick="deleteCategory('@category.Id',this)">
+                                Usuń
+                            </button>
+                        </td>
+                    </tr>
+
+                }
+            }
+            else
+            {
+                <tr>
+                    <td class="text-center" colspan="5">
+                        Brak kategorii!
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
