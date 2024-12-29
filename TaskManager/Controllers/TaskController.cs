@@ -21,11 +21,15 @@ namespace TaskManager.Controllers
     public class TaskController : Controller
     {
         private ITaskService _taskService;
+        private ICategoryService _categoryService;
 
-        public TaskController(ITaskService taskService)
+        public TaskController(
+            ITaskService taskService,
+            ICategoryService categoryService)
         {
           _taskService = taskService;
-        }
+          _categoryService = categoryService;
+    }
 
         public IActionResult Tasks()
         {
@@ -35,7 +39,7 @@ namespace TaskManager.Controllers
             {
                 FilterTasks = new FilterTasks(),
                 Tasks = _taskService.Get(userId),
-                Categories = _taskService.GetCategories()
+                Categories = _categoryService.Get(userId)
             };
 
             return View(vm);
@@ -67,7 +71,7 @@ namespace TaskManager.Controllers
                 Task = task,
                 Heading = id == 0 ?
                     "Dodawanie nowego zadania" : "Edytowanie zadania",
-                Categories = _taskService.GetCategories()
+                Categories = _categoryService.Get(userId)
             };
 
             return View(vm);
@@ -87,7 +91,7 @@ namespace TaskManager.Controllers
                     Task = task,
                     Heading = task.Id == 0 ?
                     "Dodawanie nowego zadania" : "Edytowanie zadania",
-                    Categories = _taskService.GetCategories()
+                    Categories = _categoryService.Get(userId)
                 };
 
                 return View("Task", vm);
