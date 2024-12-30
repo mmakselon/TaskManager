@@ -106,7 +106,7 @@ namespace TaskManager.Controllers
             return RedirectToAction("Tasks");
         }
 
-[HttpPost]
+        [HttpPost]
         public IActionResult Delete(int id)
         {
             try
