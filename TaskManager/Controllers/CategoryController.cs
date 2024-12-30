@@ -35,5 +35,15 @@ namespace TaskManager.Controllers
             return View(categories);
         }
 
+        public IActionResult Category (int id = 0)
+        {
+            var userId = User.GetUserId();
+
+            var category = id ==0?
+                new Category { UserId = userId } :
+                _categoryService.Get(id,userId);
+
+            return View();
+
     }
 }
