@@ -43,7 +43,14 @@ namespace TaskManager.Controllers
                 new Category { UserId = userId } :
                 _categoryService.Get(id,userId);
 
-            return View();
+            var vm = new CategoryViewModel
+            {
+                Category = category,
+                Heading = id ==0 ?
+                "Dodawanie nowej kategorii" :
+                "Edytowanie kategorii"
+            };
 
+            return View(vm);
     }
 }
