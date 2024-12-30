@@ -20,7 +20,20 @@ namespace TaskManager.Controllers
     [Authorize]
     public class CategoryController : Controller
     {
-        
+        private ICategoryService _categoryService;
+
+        public CategoryController(ICategoryService categoryService)
+        {
+            _categoryService = categoryService;
+        }
+
+        public IActionResult Categories()
+        { 
+            var userId = User.GetUserId();
+            var categories = _categoryService.Get(userId);
+            
+            return View(categories);
+        }
 
     }
 }
