@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using TaskManager.Core.Models.Domains;
+using TaskManager.Core.Service;
 
 namespace TaskManager.Areas.Identity.Pages.Account
 {
@@ -30,13 +31,15 @@ namespace TaskManager.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ICategoryService _categoryService;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ICategoryService categoryService)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +47,7 @@ namespace TaskManager.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _categoryService = categoryService;
         }
 
         /// <summary>
@@ -134,6 +138,17 @@ namespace TaskManager.Areas.Identity.Pages.Account
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+
+                if(string.IsNullOrWhiteSpace(user.Id))
+                {
+                    _categoryService.Add(
+                        new Category
+                        {
+                            Name = "Ogolna",
+                            UserId = user.Id
+                        });
+                }
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
